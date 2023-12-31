@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CALCULADORA</title>
+    <link rel="stylesheet" type="text/css" href="Styless.css">
+</head>
+<body>
+		<header>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/LOGO_UNSA.png/1200px-LOGO_UNSA.png">
+    			<h1>CALCULADORA</h1>
+     				<hr>
+    			<p>Trabajo correspondiente al laboratorio 09</p>
+    </header>
+    <main>
+        <form action="/cgi-bn/funcionalidad.pl" method="POST">
+            <table class="diseño_calculadora">
+                <tr>
+                    <td colspan="5"><span id="resultado"></span></td>
+                </tr>
+                <tr>
+                    <td><button type="button" onclick="agregarCaracter('(')">(</button></td>
+                    <td><button type="button" onclick="agregarCaracter(')')">)</button></td>
+                    <td><button type="button" onclick="agregarCaracter('%')">%</button></td>
+
+                    <td><button type="button" onclick="limpiar()" style="color: red ;">C</button></td>
+
+                </tr>
+                <tr>
+                    <td><button type="button" onclick="agregarCaracter('7')">7</button></td>
+                    <td><button type="button" onclick="agregarCaracter('8')">8</button></td>
+                    <td><button type="button" onclick="agregarCaracter('9')">9</button></td>
+                    <td><button type="button" onclick="agregarCaracter('/')">/</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" onclick="agregarCaracter('4')">4</button></td>
+                    <td><button type="button" onclick="agregarCaracter('5')">5</button></td>
+                    <td><button type="button" onclick="agregarCaracter('6')">6</button></td>
+                    <td><button type="button" onclick="agregarCaracter('*')">*</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" onclick="agregarCaracter('1')">1</button></td>
+                    <td><button type="button" onclick="agregarCaracter('2')">2</button></td>
+                    <td><button type="button" onclick="agregarCaracter('3')">3</button></td>
+                    <td><button type="button" onclick="agregarCaracter('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" onclick="agregarCaracter('0')">0</button></td>
+                    <td><button type="button" onclick="agregarCaracter('.')">.</button></td>
+                    <td><button type="button" onclick="calcular()">=</button></td>
+                    <td><button type="button" onclick="agregarCaracter('+')">+</button></td>
+                </tr>
+            </table>
+            <input type="hidden" name="expresion" id="expresion" value="">
+        </form>
+    </main>
+    <script>
+        function agregarCaracter(caracter) {
+            var expresion = document.getElementById('expresion');
+            expresion.value += caracter;
+            document.getElementById('resultado').textContent = expresion.value;
+        }
+
+        function limpiar() {
+            var expresion = document.getElementById('expresion');
+            expresion.value = '';
+            document.getElementById('resultado').textContent = '';
+        }
+
+        function calcular() {
+            var expresion = document.getElementById('expresion');
+            expresion.value = eval(expresion.value);
+            document.getElementById('resultado').textContent = expresion.value;
+        }
+    </script>
+</body>
+</html>
